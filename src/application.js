@@ -13,6 +13,8 @@ class Application {
   MSG_BOOM = "[Sandbox 3x3] BOOM! – Game Over.";
   MSG_CLEAN = "[Sandbox 3x3] 3 bombs around your square.";
   MSG_CLEAN2 = "[Sandbox 3x3] 2 bombs around your square.";
+  MSG_CLEAN3 = "[Sandbox 3x3] 2 bombs around your square.";
+
 
   constructor(inputMap) {
     if (inputMap==null) {
@@ -39,6 +41,9 @@ class Application {
       if (step[0]==0) {
         this.setSign(step, "2");
         this.setMessageLine(this.MSG_CLEAN2);  
+      } else if (step[0]==2) {
+        this.setSign(step, "1");
+        this.setMessageLine(this.MSG_CLEAN3);  
       } else {
       this.setSign(step, "3");
       this.setMessageLine(this.MSG_CLEAN);

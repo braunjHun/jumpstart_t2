@@ -151,7 +151,7 @@ So that I know I did a wrong movement
   GIVEN step to position 2;0
   WHEN drawing the board
   THEN I will see an X in 2;0 on the board and the message BOOM! – Game Over
-  # User Story #3 🚧
+  # User Story #3 ✅
 As a player I step on a clean position
 I want to see the number of bombs around
 So that I can plan my next step

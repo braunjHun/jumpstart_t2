@@ -9,9 +9,9 @@ describe('Mine Sweeper', () => {
   });
   describe('As a player I step on a bomb I want to see BOOM! – Game Over So that I know I did a wrong movement', () => {
     const us2Map = [
-      [[" "," "," "],[" ","B"," "],[" "," "," "]],
-      [[" "," ","B"],[" "," "," "],[" "," "," "]],
-      [[" "," "," "],[" "," "," "],["B"," "," "]]
+      [[" ", " ", " "], [" ", "B", " "], [" ", " ", " "]],
+      [[" ", " ", "B"], [" ", " ", " "], [" ", " ", " "]],
+      [[" ", " ", " "], [" ", " ", " "], ["B", " ", " "]]
     ];
     const us2Step = [
       [1, 1],
@@ -33,9 +33,9 @@ describe('Mine Sweeper', () => {
   });
   describe('As a player I step on a clean position I want to see the number of bombs around So that I can plan my next step', () => {
     const us3Map = [
-      [[" ","B"," "],["B"," ","B"],[" "," "," "]],
-      [[" ","B"," "],["B"," ","B"],[" "," "," "]],
-      [[" ","B"," "],["B"," ","B"],[" "," "," "]]
+      [[" ", "B", " "], ["B", " ", "B"], [" ", " ", " "]],
+      [[" ", "B", " "], ["B", " ", "B"], [" ", " ", " "]],
+      [[" ", "B", " "], ["B", " ", "B"], [" ", " ", " "]]
     ];
     const us3Step = [
       [1, 1],
@@ -48,38 +48,42 @@ describe('Mine Sweeper', () => {
       ["+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bombs around your square."]
     ];
     for (let i = 0; i < us3Step.length; i++) {
-    it(`GIVEN step to position [${us3Step[i]}] WHEN drawing the board THEN I will see [${us3Result[i]}]`, () => {
-      const application = new Application(us3Map[i]);
+      it(`GIVEN step to position [${us3Step[i]}] WHEN drawing the board THEN I will see [${us3Result[i]}]`, () => {
+        const application = new Application(us3Map[i]);
         application.takeStep(us3Step[i]);
         expect(application.drawBoard()).toEqual(us3Result[i].toString());
-    });
-  }
-  });  
-  
+      });
+    }
+  });
+
   describe('As a player I want to mark the bombs expected So that I can think on the next cleaning step', () => {
-  it(`GIVEN a positon [1;0] to mark
-  WHEN drawing the board
-  THEN I will see 1;0 is marked on the board and the message Square flagged as bomb.`, () => {
-    const application = new Application([[" "," "," "],["B"," "," "],[" "," "," "]],);
-      application.takeStep([2,0]);
-      application.markSquare([[1,0]]);
-      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*| | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
+    const us4Map = [
+      [[" ", " ", " "], ["B", " ", " "], [" ", " ", " "]],
+      [[" ", " ", " "], ["B", "B", " "], [" ", " ", " "]],
+      [[" ", " ", " "], ["B", "B", " "], [" ", "B", " "]],
+    ];
+    const us4Step = [
+      [2, 0],
+      [2, 0],
+      [2, 0]
+    ];
+    const us4Mark = [
+      [[1, 0]],
+      [[1, 0], [1, 1]],
+      [[1, 0], [1, 1], [2, 1]]
+    ];
+    const us4Result = [
+      ["+-+-+-+\n| | | |\n+-+-+-+\n|*| | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."],
+      ["+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."],
+      ["+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb."]
+    ];
+    for (let i = 0; i < us4Step.length; i++) {
+      it(`GIVEN a positon [${us4Mark[i]}] to mark WHEN drawing the board THEN I will see ${us4Result[i]}`, () => {
+        const application = new Application(us4Map[i]);
+        application.takeStep(us4Step[i]);
+        application.markSquare(us4Mark[i]);
+        expect(application.drawBoard()).toEqual(us4Result[i].toString());
+      });
+    }
   });
-  it(`GIVEN two positons [1;0 + 1;1] to mark
-  WHEN drawing the board
-  THEN I will see 1;0 and 1;1 are marked on the board and the message Square flagged as bomb.`, () => {
-    const application = new Application([[" "," "," "],["B","B"," "],[" "," "," "]],);
-      application.takeStep([2,0]);
-      application.markSquare([[1,0],[1,1]]);
-      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
-  });
-  it(`GIVEN a positon [1;0 + 1;1 + 2;1] to mark
-  WHEN drawing the board
-  THEN I will see an 1;0 and 1;1 and 2;1 are marked on the board and the message Square flagged as bomb.`, () => {
-    const application = new Application([[" "," "," "],["B","B"," "],[" ","B"," "]],);
-      application.takeStep([2,0]);
-      application.markSquare([[1,0],[1,1],[2,1]]);
-      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
-  });
-});
 });

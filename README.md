@@ -174,7 +174,7 @@ So that I can plan my next step
 
   Mark the bombs around – What I expect after I marked the 3 squares as bombs [1;0 + 1;1 + 0;1]. 
 
-# User Story #4 🚧
+# User Story #4 ✅
 As a player 
 I want to mark the bombs expected 
 So that I can think on the next cleaning step

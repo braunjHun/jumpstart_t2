@@ -1,5 +1,5 @@
 class Application {
-  
+
   BOARD_HORIZONTAL_LINE = "+-+-+-+";
   BOARD_COLUMN = "|";
   BOARD_NEW_LINE = "\n";
@@ -15,26 +15,26 @@ class Application {
   MSG_MARK = "[Sandbox 3x3] Square flagged as bomb.";
 
   constructor(inputMap) {
-    if (inputMap==null) {
+    if (inputMap == null) {
       this.BOARD_MAP = [
-      [this.BOARD_SPACE,this.BOARD_SPACE,this.BOARD_SPACE],
-      [this.BOARD_SPACE,this.BOARD_SPACE,this.BOARD_SPACE],
-      [this.BOARD_SPACE,this.BOARD_SPACE,this.BOARD_SPACE]
-    ];
-  } else {
-    this.BOARD_MAP = inputMap;
-  }
+        [this.BOARD_SPACE, this.BOARD_SPACE, this.BOARD_SPACE],
+        [this.BOARD_SPACE, this.BOARD_SPACE, this.BOARD_SPACE],
+        [this.BOARD_SPACE, this.BOARD_SPACE, this.BOARD_SPACE]
+      ];
+    } else {
+      this.BOARD_MAP = inputMap;
+    }
     this.setMessageLine(this.MSG_CREATE);
   }
 
-  setMessageLine(msg){
+  setMessageLine(msg) {
     this.BOARD_MSG_LINE = msg;
   }
 
   takeStep(step) {
     if (this.isBomb(step)) {
-       this.setSign(step, this.BOARD_BOOM);
-       this.setMessageLine(this.MSG_BOOM);
+      this.setSign(step, this.BOARD_BOOM);
+      this.setMessageLine(this.MSG_BOOM);
     } else {
       let bombCount = this.getBombCount(step);
       this.setSign(step, bombCount.toString());
@@ -42,44 +42,43 @@ class Application {
     }
   }
 
-  markSquare(step) {
-    if (step.length == 2) {
-      this.setSign(step[0], "*");
-      this.setSign(step[1], "*");
-      this.setMessageLine(this.MSG_MARK);
-    } else  if (step.length == 3) {
-      this.setSign(step[0], "*");
-      this.setSign(step[1], "*");
-      this.setSign(step[2], "*");
-      this.setMessageLine(this.MSG_MARK);
-    } else {
-    this.setSign(step[0], "*");
-    this.setMessageLine(this.MSG_MARK);
+  markSquare(marks) {
+    for (let i = 0; i < marks.length; i++) {
+      this.setSign(marks[i], "*");
     }
+    this.setMessageLine(this.MSG_MARK);
   }
 
-  isBomb(step){
+  isBomb(step) {
     return this.BOARD_MAP[step[0]][step[1]] === this.BOARD_BOMB;
   }
 
   getBombCount(step) {
     let bombCount = 0;
-    let matrix = [[]];
-    
-    if (step[0] == 0 && step[1] == 2) {
-      matrix = [[0,1],[1,1],[1,2]];
-    } 
-    if (step[0] == 1 && step[1] == 1) {
-    matrix = [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]];
-    }
-    if (step[0] == 2 && step[1] == 0) {
-    matrix = [[1,0],[1,1],[2,1]];
-    }
-    
-    
+    let completeMatrix =   [
+      // 0,0
+      [[[0,1],[1,0],[1,1]],
+      // 0,1
+      [[0,0],[0,2],[1,0],[1,1],[1,2]],
+      // 0,2
+      [[0,1],[1,1],[1,2]]],
+      // 1,0
+      [[[0,0],[0,1],[1,1],[2,0],[2,1]],
+      // 1,1
+      [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]],
+      // 1,2	
+      [[0,1],[0,2],[1,1],[2,1],[2,2]]],
+      // 2,0
+      [[[1,0],[1,1],[2,1]],
+      // 2,1
+      [[1,0],[1,1],[1,2],[2,0],[2,2]],
+      // 2,2
+      [[1,1],[1,2],[2,1]]]  
+    ];
+    let matrix = completeMatrix[step[0]][step[1]];
     for (let i = 0; i < matrix.length; i++) {
       if (this.BOARD_MAP[matrix[i][0]][matrix[i][1]] === this.BOARD_BOMB) {
-        bombCount ++;
+        bombCount++;
       }
     }
     return bombCount;
@@ -87,22 +86,22 @@ class Application {
 
   drawBoard() {
     return this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
-    this.BOARD_COLUMN + this.determineSign([0,0]) + 
-    this.BOARD_COLUMN + this.determineSign([0,1]) + 
-    this.BOARD_COLUMN + this.determineSign([0,2]) + 
-    this.BOARD_COLUMN + this.BOARD_NEW_LINE + 
-    this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
-    this.BOARD_COLUMN + this.determineSign([1,0]) + 
-    this.BOARD_COLUMN + this.determineSign([1,1]) + 
-    this.BOARD_COLUMN + this.determineSign([1,2]) + 
-    this.BOARD_COLUMN + this.BOARD_NEW_LINE + 
-    this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
-    this.BOARD_COLUMN + this.determineSign([2,0]) + 
-    this.BOARD_COLUMN + this.determineSign([2,1]) +  
-    this.BOARD_COLUMN + this.determineSign([2,2]) + 
-    this.BOARD_COLUMN + this.BOARD_NEW_LINE + 
-    this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
-    this.BOARD_NEW_LINE + this.BOARD_MSG_LINE;
+      this.BOARD_COLUMN + this.determineSign([0, 0]) +
+      this.BOARD_COLUMN + this.determineSign([0, 1]) +
+      this.BOARD_COLUMN + this.determineSign([0, 2]) +
+      this.BOARD_COLUMN + this.BOARD_NEW_LINE +
+      this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
+      this.BOARD_COLUMN + this.determineSign([1, 0]) +
+      this.BOARD_COLUMN + this.determineSign([1, 1]) +
+      this.BOARD_COLUMN + this.determineSign([1, 2]) +
+      this.BOARD_COLUMN + this.BOARD_NEW_LINE +
+      this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
+      this.BOARD_COLUMN + this.determineSign([2, 0]) +
+      this.BOARD_COLUMN + this.determineSign([2, 1]) +
+      this.BOARD_COLUMN + this.determineSign([2, 2]) +
+      this.BOARD_COLUMN + this.BOARD_NEW_LINE +
+      this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
+      this.BOARD_NEW_LINE + this.BOARD_MSG_LINE;
   }
 
   setSign(step, sign) {

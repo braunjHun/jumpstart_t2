@@ -170,10 +170,6 @@ So that I can plan my next step
   GIVEN step to position 2;0
   WHEN drawing the board
   THEN I will see an 1 in 2;0 on the board and the message 1 bombs around your square. 
-
-
-  Mark the bombs around – What I expect after I marked the 3 squares as bombs [1;0 + 1;1 + 0;1]. 
-
 # User Story #4 ✅
 As a player 
 I want to mark the bombs expected 
@@ -193,3 +189,15 @@ So that I can think on the next cleaning step
   GIVEN a positon [1;0 + 1;1 + 0;1] to mark
   WHEN drawing the board
   THEN I will see an 1;0 and 1;1 and 0;1 are marked on the board and the message Square flagged as bomb.
+
+
+After I cleared the all the squares [2;0 + 2;1 + 2;2 + 1;2 + 1;2]
+  # User Story #5 ⚠️
+As a player 
+I want to mark all the bombs expected 
+So that I can win the game
+
+ ## Scenario #1 
+  GIVEN all the squares [2;0 + 2;1 + 2;2 + 1;2 + 1;2] to mark
+  WHEN drawing the board
+  THEN I will see all the markings on the board and the message the land is cleared! GOOD JOB!

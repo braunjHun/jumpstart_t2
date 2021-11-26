@@ -54,5 +54,16 @@ describe('Mine Sweeper', () => {
         expect(application.drawBoard()).toEqual(us3Result[i].toString());
     });
   }
-  });    
+  });  
+  
+  describe('As a player I want to mark the bombs expected So that I can think on the next cleaning step', () => {
+  it(`GIVEN a positon [1;0] to mark
+  WHEN drawing the board
+  THEN I will see 1;0 is marked on the board and the message Square flagged as bomb.`, () => {
+    const application = new Application([[" "," "," "],["B"," "," "],[" "," "," "]],);
+      application.takeStep([2,0]);
+      application.markSquare([1,0]);
+      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*| | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bombs around your square.");
+  });
+});
 });

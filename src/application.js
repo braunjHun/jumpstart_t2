@@ -43,8 +43,14 @@ class Application {
   }
 
   markSquare(step) {
-    this.setSign(step, "*");
+    if (step.length == 2) {
+      this.setSign(step[0], "*");
+      this.setSign(step[1], "*");
+      this.setMessageLine(this.MSG_MARK);
+    } else {
+    this.setSign(step[0], "*");
     this.setMessageLine(this.MSG_MARK);
+    }
   }
 
   isBomb(step){

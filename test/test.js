@@ -62,7 +62,7 @@ describe('Mine Sweeper', () => {
   THEN I will see 1;0 is marked on the board and the message Square flagged as bomb.`, () => {
     const application = new Application([[" "," "," "],["B"," "," "],[" "," "," "]],);
       application.takeStep([2,0]);
-      application.markSquare([1,0]);
+      application.markSquare([[1,0]]);
       expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*| | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
   });
   it(`GIVEN two positons [1;0 + 1;1] to mark
@@ -70,7 +70,7 @@ describe('Mine Sweeper', () => {
   THEN I will see 1;0 and 1;1 are marked on the board and the message Square flagged as bomb.`, () => {
     const application = new Application([[" "," "," "],["B","B"," "],[" "," "," "]],);
       application.takeStep([2,0]);
-      application.markSquare([1,0],[1,1]);
+      application.markSquare([[1,0],[1,1]]);
       expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
   });
 });

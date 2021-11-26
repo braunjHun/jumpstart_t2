@@ -42,5 +42,11 @@ t2
 	* ✅ complete UserStroy #1 Scenario #1 
 
 2. Pomodoro session:
-	* ⚠️ create UserStory #2 and Scenario #1 
-	* ⚠️ complete UserStroy #2 Scenario #1 
+    * ✅ pomodoro plan
+	* ✅ create UserStory #2 
+		* Scenario #1
+		* Scenario #2 
+		* Scenario #3
+	* ⚠️ complete UserStroy #2 Scenario #1
+	* ⚠️ complete UserStroy #2 Scenario #2
+	* ⚠️ complete UserStroy #2 Scenario #3 

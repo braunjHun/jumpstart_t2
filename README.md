@@ -120,15 +120,34 @@ You don't have to mark all the bombs to win; you just need to open all non-bomb 
 [Sandbox 3x3] the land is cleared! GOOD JOB! 
 ```` 
  
-# User Story #1 ⚠
+# User Story #1 ✅
 As a player I start the game
 I want to see the board
 So that I can start to play the game...
 
 
-## Scenario #1 ⚠
-  GIVEN string NEW
+## Scenario #1 ✅
+  GIVEN string the game
   WHEN drawing the board
   THEN I will get back the new empty board
 
 
+# User Story #2 ⚠
+As a player I step on a bomb
+I want to see BOOM! – Game Over
+So that I know I did a wrong movement
+
+ ## Scenario #1 ⚠
+  GIVEN step to position 1;1
+  WHEN drawing the board
+  THEN I will see the board with the get back the new empty board 
+
+ ## Scenario #2 ⚠
+  GIVEN step to position 0;2
+  WHEN drawing the board
+  THEN I will see the board with the get back the new empty board 
+
+ ## Scenario #3 ⚠
+  GIVEN step to position 2;0
+  WHEN drawing the board
+  THEN I will see the board with the get back the new empty board 

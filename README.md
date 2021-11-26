@@ -151,3 +151,22 @@ So that I know I did a wrong movement
   GIVEN step to position 2;0
   WHEN drawing the board
   THEN I will see an X in 2;0 on the board and the message BOOM! – Game Over
+  # User Story #2 ⚠️
+As a player I step on a clean position
+I want to see the number of bombs around
+So that I can plan my next step
+
+ ## Scenario #1 
+  GIVEN step to position 1;1
+  WHEN drawing the board
+  THEN I will see an 3 in 1;1 on the board and the message 3 bombs around your square. 
+
+ ## Scenario #2 
+  GIVEN step to position 0;2
+  WHEN drawing the board
+  THEN I will see an 2 in 0;2 on the board and the message 2 bombs around your square. 
+
+ ## Scenario #3 
+  GIVEN step to position 2;0
+  WHEN drawing the board
+  THEN I will see an 1 in 2;0 on the board and the message 1 bombs around your square. 

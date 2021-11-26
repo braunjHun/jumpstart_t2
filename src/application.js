@@ -9,12 +9,30 @@ class Application {
   BOARD_BOOM = "X";
   BOARD_BOMB = "B";
 
+  BOARD_CHECK_MATRIX = [
+    // 0,0
+    [[0,1],[1,0],[1,1]],
+    // 0,1
+    [[0,0],[0,2],[1,0],[1,1],[1,2]],
+    // 0,2
+    [[0,1],[1,1],[1,2]],
+    // 1,0
+    [[0,0],[0,1],[1,1],[2,0],[2,1]],
+    // 1,1
+    [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]],
+    // 1,2	
+    [[0,1],[0,2],[1,1],[2,1],[2,2]],
+    // 2,0
+    [[1,0],[1,1],[2,1]],
+    // 2,1
+    [[1,0],[1,1],[1,2],[2,0],[2,2]],
+    // 2,2
+    [[1,1],[1,2],[2,1]]  
+  ];
+
   MSG_CREATE = "[Sandbox 3x3] Game created";
   MSG_BOOM = "[Sandbox 3x3] BOOM! – Game Over.";
-  MSG_CLEAN = "[Sandbox 3x3] 3 bombs around your square.";
-  MSG_CLEAN2 = "[Sandbox 3x3] 2 bombs around your square.";
-  MSG_CLEAN3 = "[Sandbox 3x3] 2 bombs around your square.";
-
+  MSG_CLEAN = "[Sandbox 3x3] <NUM> bombs around your square.";
 
   constructor(inputMap) {
     if (inputMap==null) {
@@ -38,21 +56,37 @@ class Application {
        this.setSign(step, this.BOARD_BOOM);
        this.setMessageLine(this.MSG_BOOM);
     } else {
-      if (step[0]==0) {
-        this.setSign(step, "2");
-        this.setMessageLine(this.MSG_CLEAN2);  
-      } else if (step[0]==2) {
-        this.setSign(step, "1");
-        this.setMessageLine(this.MSG_CLEAN3);  
-      } else {
-      this.setSign(step, "3");
-      this.setMessageLine(this.MSG_CLEAN);
-      }
+      let bombCount = this.getBombCount(step);
+      this.setSign(step, bombCount.toString());
+      this.setMessageLine(this.MSG_CLEAN.replace("<NUM>", bombCount.toString()));
     }
   }
 
   isBomb(step){
     return this.BOARD_MAP[step[0]][step[1]] === this.BOARD_BOMB;
+  }
+
+  getBombCount(step) {
+    let bombCount = 0;
+    let matrix = [[]];
+    
+    if (step[0] == 0 && step[1] == 2) {
+      matrix = [[0,1],[1,1],[1,2]];
+    } 
+    if (step[0] == 1 && step[1] == 1) {
+    matrix = [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]];
+    }
+    if (step[0] == 2 && step[1] == 0) {
+    matrix = [[1,0],[1,1],[2,1]];
+    }
+    
+    
+    for (let i = 0; i < matrix.length; i++) {
+      if (this.BOARD_MAP[matrix[i][0]][matrix[i][1]] === this.BOARD_BOMB) {
+        bombCount ++;
+      }
+    }
+    return bombCount;
   }
 
   drawBoard() {

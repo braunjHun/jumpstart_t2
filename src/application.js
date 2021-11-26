@@ -8,26 +8,19 @@ class Application {
   BOARD_SPACE = " ";
   BOARD_BOOM = "X";
   BOARD_BOMB = "B";
+  BOARD_MARK = "*";
+  BOARD_CLEAN = "_";
 
-  BOARD_MATRIX =   [
-    // 0,0
-    [[[0,1],[1,0],[1,1]],
-    // 0,1
-    [[0,0],[0,2],[1,0],[1,1],[1,2]],
-    // 0,2
-    [[0,1],[1,1],[1,2]]],
-    // 1,0
-    [[[0,0],[0,1],[1,1],[2,0],[2,1]],
-    // 1,1
-    [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]],
-    // 1,2	
-    [[0,1],[0,2],[1,1],[2,1],[2,2]]],
-    // 2,0
-    [[[1,0],[1,1],[2,1]],
-    // 2,1
-    [[1,0],[1,1],[1,2],[2,0],[2,2]],
-    // 2,2
-    [[1,1],[1,2],[2,1]]]  
+  BOARD_MATRIX = [
+    [[[0, 1], [1, 0], [1, 1]],
+    [[0, 0], [0, 2], [1, 0], [1, 1], [1, 2]],
+    [[0, 1], [1, 1], [1, 2]]],
+    [[[0, 0], [0, 1], [1, 1], [2, 0], [2, 1]],
+    [[0, 0], [0, 1], [0, 2], [1, 0], [1, 2], [2, 0], [2, 1], [2, 2]],
+    [[0, 1], [0, 2], [1, 1], [2, 1], [2, 2]]],
+    [[[1, 0], [1, 1], [2, 1]],
+    [[1, 0], [1, 1], [1, 2], [2, 0], [2, 2]],
+    [[1, 1], [1, 2], [2, 1]]]
   ];
 
   MSG_CREATE = "[Sandbox 3x3] Game created";
@@ -53,22 +46,19 @@ class Application {
     this.BOARD_MSG_LINE = msg;
   }
 
-  getBoardMsgLine(){
+  getBoardMsgLine() {
     if (this.isBoardCleared()) {
       this.setMessageLine(this.MSG_CLEARED);
-    } 
+    }
     return this.BOARD_NEW_LINE + this.BOARD_MSG_LINE;
   }
 
   isBoardCleared() {
+    let countSpace = 0;
     for (let i = 0; i < this.BOARD_MAP.length; i++) {
-      for (let j = 0; j < this.BOARD_MAP[i].length; j++) {
-        if (this.BOARD_MAP[i][j] === this.BOARD_SPACE) {
-          return false;
-        }
-      }
+      countSpace += this.BOARD_MAP[i].filter((space) => space === this.BOARD_SPACE).length;
     }
-    return true;
+    return countSpace == 0;
   }
   takeStep(step) {
     if (this.isBomb(step)) {
@@ -76,7 +66,7 @@ class Application {
       this.setMessageLine(this.MSG_BOOM);
     } else {
       let bombCount = this.getBombCount(step);
-      if (bombCount==0) {
+      if (bombCount == 0) {
         this.automaticallyClearing(step);
       } else {
         this.setSign(step, bombCount.toString());
@@ -85,27 +75,27 @@ class Application {
     }
   }
 
-automaticallyClearing(step) {
-  this.setSign(step, "_");
-  let collectionOfSteps = [];
-  let matrix = this.BOARD_MATRIX[step[0]][step[1]];
+  automaticallyClearing(step) {
+    this.setSign(step, this.BOARD_CLEAN);
+    let collectionOfSteps = [];
+    let matrix = this.BOARD_MATRIX[step[0]][step[1]];
     for (let i = 0; i < matrix.length; i++) {
       let x = matrix[i][0];
       let y = matrix[i][1];
       if (this.BOARD_MAP[x][y] === this.BOARD_SPACE) {
-        collectionOfSteps.push([x,y]);
+        collectionOfSteps.push([x, y]);
       }
     }
-  if (collectionOfSteps.length>0) { 
-    for (var i=0; i<collectionOfSteps.length; i++) {
-      this.takeStep(collectionOfSteps[i]);
+    if (collectionOfSteps.length > 0) {
+      for (var i = 0; i < collectionOfSteps.length; i++) {
+        this.takeStep(collectionOfSteps[i]);
+      }
     }
   }
-}
 
   markSquare(marks) {
     for (let i = 0; i < marks.length; i++) {
-      this.setSign(marks[i], "*");
+      this.setSign(marks[i], this.BOARD_MARK);
     }
     this.setMessageLine(this.MSG_MARK);
   }
@@ -116,7 +106,7 @@ automaticallyClearing(step) {
 
   getBombCount(step) {
     let bombCount = 0;
-    
+
     let matrix = this.BOARD_MATRIX[step[0]][step[1]];
     for (let i = 0; i < matrix.length; i++) {
       if (this.BOARD_MAP[matrix[i][0]][matrix[i][1]] === this.BOARD_BOMB) {

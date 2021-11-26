@@ -73,13 +73,13 @@ describe('Mine Sweeper', () => {
       application.markSquare([[1,0],[1,1]]);
       expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|2| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
   });
-  it(`GIVEN a positon [1;0 + 1;1 + 0;1] to mark
+  it(`GIVEN a positon [1;0 + 1;1 + 2;1] to mark
   WHEN drawing the board
-  THEN I will see an 1;0 and 1;1 and 0;1 are marked on the board and the message Square flagged as bomb.`, () => {
+  THEN I will see an 1;0 and 1;1 and 2;1 are marked on the board and the message Square flagged as bomb.`, () => {
     const application = new Application([[" "," "," "],["B","B"," "],[" ","B"," "]],);
       application.takeStep([2,0]);
-      application.markSquare([[1,0],[1,1],[0,1]]);
-      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|* | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
+      application.markSquare([[1,0],[1,1],[2,1]]);
+      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*|*| |\n+-+-+-+\n|3|*| |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
   });
 });
 });

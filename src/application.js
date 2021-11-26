@@ -47,6 +47,11 @@ class Application {
       this.setSign(step[0], "*");
       this.setSign(step[1], "*");
       this.setMessageLine(this.MSG_MARK);
+    } else  if (step.length == 3) {
+      this.setSign(step[0], "*");
+      this.setSign(step[1], "*");
+      this.setSign(step[2], "*");
+      this.setMessageLine(this.MSG_MARK);
     } else {
     this.setSign(step[0], "*");
     this.setMessageLine(this.MSG_MARK);

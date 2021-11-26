@@ -151,7 +151,7 @@ So that I know I did a wrong movement
   GIVEN step to position 2;0
   WHEN drawing the board
   THEN I will see an X in 2;0 on the board and the message BOOM! – Game Over
-  # User Story #3 ✅
+# User Story #3 ✅
 As a player I step on a clean position
 I want to see the number of bombs around
 So that I can plan my next step
@@ -170,3 +170,26 @@ So that I can plan my next step
   GIVEN step to position 2;0
   WHEN drawing the board
   THEN I will see an 1 in 2;0 on the board and the message 1 bombs around your square. 
+
+
+  Mark the bombs around – What I expect after I marked the 3 squares as bombs [1;0 + 1;1 + 0;1]. 
+
+# User Story #4 ⚠️
+As a player 
+I want to mark the bombs expected 
+So that I can think on the next cleaning step
+
+ ## Scenario #1 
+  GIVEN a positon [1;0] to mark
+  WHEN drawing the board
+  THEN I will see 1;0 is marked on the board and the message Square flagged as bomb.
+
+ ## Scenario #2 
+  GIVEN two positons [1;0 + 1;1] to mark
+  WHEN drawing the board
+  THEN I will see 1;0 and 1;1 are marked on the board and the message Square flagged as bomb.
+
+ ## Scenario #3 
+  GIVEN a positon [1;0 + 1;1 + 0;1] to mark
+  WHEN drawing the board
+  THEN I will see an 1;0 and 1;1 and 0;1 are marked on the board and the message Square flagged as bomb.

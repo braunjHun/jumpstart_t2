@@ -9,6 +9,27 @@ class Application {
   BOARD_BOOM = "X";
   BOARD_BOMB = "B";
 
+  BOARD_MATRIX =   [
+    // 0,0
+    [[[0,1],[1,0],[1,1]],
+    // 0,1
+    [[0,0],[0,2],[1,0],[1,1],[1,2]],
+    // 0,2
+    [[0,1],[1,1],[1,2]]],
+    // 1,0
+    [[[0,0],[0,1],[1,1],[2,0],[2,1]],
+    // 1,1
+    [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]],
+    // 1,2	
+    [[0,1],[0,2],[1,1],[2,1],[2,2]]],
+    // 2,0
+    [[[1,0],[1,1],[2,1]],
+    // 2,1
+    [[1,0],[1,1],[1,2],[2,0],[2,2]],
+    // 2,2
+    [[1,1],[1,2],[2,1]]]  
+  ];
+
   MSG_CREATE = "[Sandbox 3x3] Game created";
   MSG_BOOM = "[Sandbox 3x3] BOOM! – Game Over.";
   MSG_CLEAN = "[Sandbox 3x3] <NUM> bombs around your square.";
@@ -55,10 +76,32 @@ class Application {
       this.setMessageLine(this.MSG_BOOM);
     } else {
       let bombCount = this.getBombCount(step);
-      this.setSign(step, bombCount.toString());
-      this.setMessageLine(this.MSG_CLEAN.replace("<NUM>", bombCount.toString()));
+      if (bombCount==0) {
+        this.automaticallyClearing(step);
+      } else {
+        this.setSign(step, bombCount.toString());
+        this.setMessageLine(this.MSG_CLEAN.replace("<NUM>", bombCount.toString()));
+      }
     }
   }
+
+automaticallyClearing(step) {
+  this.setSign(step, "_");
+  let collectionOfSteps = [];
+  let matrix = this.BOARD_MATRIX[step[0]][step[1]];
+    for (let i = 0; i < matrix.length; i++) {
+      let x = matrix[i][0];
+      let y = matrix[i][1];
+      if (this.BOARD_MAP[x][y] === this.BOARD_SPACE) {
+        collectionOfSteps.push([x,y]);
+      }
+    }
+  if (collectionOfSteps.length>0) { 
+    for (var i=0; i<collectionOfSteps.length; i++) {
+      this.takeStep(collectionOfSteps[i]);
+    }
+  }
+}
 
   markSquare(marks) {
     for (let i = 0; i < marks.length; i++) {
@@ -73,27 +116,8 @@ class Application {
 
   getBombCount(step) {
     let bombCount = 0;
-    let completeMatrix =   [
-      // 0,0
-      [[[0,1],[1,0],[1,1]],
-      // 0,1
-      [[0,0],[0,2],[1,0],[1,1],[1,2]],
-      // 0,2
-      [[0,1],[1,1],[1,2]]],
-      // 1,0
-      [[[0,0],[0,1],[1,1],[2,0],[2,1]],
-      // 1,1
-      [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]],
-      // 1,2	
-      [[0,1],[0,2],[1,1],[2,1],[2,2]]],
-      // 2,0
-      [[[1,0],[1,1],[2,1]],
-      // 2,1
-      [[1,0],[1,1],[1,2],[2,0],[2,2]],
-      // 2,2
-      [[1,1],[1,2],[2,1]]]  
-    ];
-    let matrix = completeMatrix[step[0]][step[1]];
+    
+    let matrix = this.BOARD_MATRIX[step[0]][step[1]];
     for (let i = 0; i < matrix.length; i++) {
       if (this.BOARD_MAP[matrix[i][0]][matrix[i][1]] === this.BOARD_BOMB) {
         bombCount++;

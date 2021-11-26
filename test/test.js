@@ -8,6 +8,11 @@ describe('Mine Sweeper', () => {
     });
   });
   describe('As a player I step on a bomb I want to see BOOM! – Game Over So that I know I did a wrong movement', () => {
+    const us2Map = [
+      [[" "," "," "],[" ","B"," "],[" "," "," "]],
+      [[" "," ","B"],[" "," "," "],[" "," "," "]],
+      [[" "," "," "],[" "," "," "],["B"," "," "]]
+    ];
     const us2Step = [
       [1, 1],
       [0, 2],
@@ -20,7 +25,7 @@ describe('Mine Sweeper', () => {
     ];
     for (let i = 0; i < us2Step.length; i++) {
       it(`GIVEN step to position [${us2Step[i]}] WHEN drawing the board THEN I will see\n${us2Result[i]}`, () => {
-        const application = new Application();
+        const application = new Application(us2Map[i]);
         application.takeStep(us2Step[i]);
         expect(application.drawBoard()).toEqual(us2Result[i].toString());
       });
@@ -36,7 +41,7 @@ describe('Mine Sweeper', () => {
         [" "," "," "],
       ]);
         application.takeStep([1,1]);
-        expect(application.drawBoard()).toEqual(["+-+-+-+\n| | | |\n+-+-+-+\n| |3| |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square."],);
+        expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n| |3| |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square.");
     });
   });    
 });

@@ -121,7 +121,7 @@ You don't have to mark all the bombs to win; you just need to open all non-bomb 
 ```` 
  
 # User Story #1 ⚠
-As a player
+As a player I start the game
 I want to see the board
 So that I can start to play the game...
 

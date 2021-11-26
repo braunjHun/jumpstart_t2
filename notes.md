@@ -28,4 +28,4 @@ t2
 	* ✅ Create note.md and add general information 
 	* ✅ add UAT scenarios
 	* ✅ plan test cases 
-	* ⚠️ add UserStroy#1 Scenatio#1 to test
+	* 🚧 add UserStroy#1 Scenatio#1 to test

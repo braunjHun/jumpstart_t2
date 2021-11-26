@@ -191,7 +191,6 @@ So that I can think on the next cleaning step
   THEN I will see an 1;0 and 1;1 and 0;1 are marked on the board and the message Square flagged as bomb.
 
 
-After I cleared the all the squares [2;0 + 2;1 + 2;2 + 1;2 + 1;2]
   # User Story #5 ✅
 As a player 
 I want to mark all the bombs expected 
@@ -201,3 +200,14 @@ So that I can win the game
   GIVEN all the squares [2;0 + 2;1 + 2;2 + 1;2 + 1;2] to mark
   WHEN drawing the board
   THEN I will see all the markings on the board and the message the land is cleared! GOOD JOB!
+
+
+  # User Story #6 ⚠️
+As a player 
+I want win automatically if the massive cleaning function clear the board
+So that I can win the game
+
+ ## Scenario #1 
+  GIVEN bomb on [0,2] then click on [0,0]
+  WHEN drawing the board
+  THEN I will see all squares cleared and the message the land is cleared! GOOD JOB!

@@ -60,3 +60,6 @@ t2
 	* ✅ refactor test and application code	
 	* ✅ create UserStory #5 and Scenario(s)
 	* ✅ complete UserStroy #5 Scenario #1
+	* ✅ create UserStory #6 and Scenario(s)
+	* ⚠️ complete UserStroy #6 Scenario #1
+	* ⚠️ refactor test and application code	

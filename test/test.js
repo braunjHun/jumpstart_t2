@@ -32,7 +32,7 @@ describe('Mine Sweeper', () => {
     }
   });
   describe('As a player I step on a clean position I want to see the number of bombs around So that I can plan my next step', () => {
-    it(` GIVEN step to position 1;1
+    it(`GIVEN step to position 1;1
     WHEN drawing the board
     THEN I will see an 3 in 1;1 on the board and the message 3 bombs around your square. `, () => {
       const application = new Application([
@@ -42,6 +42,17 @@ describe('Mine Sweeper', () => {
       ]);
         application.takeStep([1,1]);
         expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n| |3| |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 3 bombs around your square.");
+    });
+    it(`GIVEN step to position 0;2
+    WHEN drawing the board
+    THEN I will see an 2 in 0;2 on the board and the message 2 bombs around your square.`, () => {
+      const application = new Application([
+        [" ","B"," "],
+        ["B"," ","B"],
+        [" "," "," "],
+      ]);
+        application.takeStep([0,2]);
+        expect(application.drawBoard()).toEqual("+-+-+-+\n| | |2|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 2 bombs around your square.");
     });
   });    
 });

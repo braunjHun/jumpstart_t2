@@ -122,14 +122,14 @@ You don't have to mark all the bombs to win; you just need to open all non-bomb 
  
 # User Story #1 ✅
 As a player I start the game
-I want to see the board
+I want to see the empty board
 So that I can start to play the game...
 
 
 ## Scenario #1 ✅
-  GIVEN string the game
+  GIVEN nothing
   WHEN drawing the board
-  THEN I will get back the new empty board
+  THEN I will see the new empty board
 
 
 # User Story #2 ⚠
@@ -140,14 +140,14 @@ So that I know I did a wrong movement
  ## Scenario #1 ⚠
   GIVEN step to position 1;1
   WHEN drawing the board
-  THEN I will see the board with the get back the new empty board 
+  THEN I will see an X in 1;1 on the board and the message BOOM! – Game Over
 
  ## Scenario #2 ⚠
   GIVEN step to position 0;2
   WHEN drawing the board
-  THEN I will see the board with the get back the new empty board 
+  THEN I will see an X in 0;2 on the board and the message BOOM! – Game Over
 
  ## Scenario #3 ⚠
   GIVEN step to position 2;0
   WHEN drawing the board
-  THEN I will see the board with the get back the new empty board 
+  THEN I will see an X in 2;0 on the board and the message BOOM! – Game Over

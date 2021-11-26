@@ -63,7 +63,7 @@ describe('Mine Sweeper', () => {
     const application = new Application([[" "," "," "],["B"," "," "],[" "," "," "]],);
       application.takeStep([2,0]);
       application.markSquare([1,0]);
-      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*| | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] 1 bombs around your square.");
+      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n|*| | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] Square flagged as bomb.");
   });
 });
 });

@@ -9,30 +9,10 @@ class Application {
   BOARD_BOOM = "X";
   BOARD_BOMB = "B";
 
-  BOARD_CHECK_MATRIX = [
-    // 0,0
-    [[0,1],[1,0],[1,1]],
-    // 0,1
-    [[0,0],[0,2],[1,0],[1,1],[1,2]],
-    // 0,2
-    [[0,1],[1,1],[1,2]],
-    // 1,0
-    [[0,0],[0,1],[1,1],[2,0],[2,1]],
-    // 1,1
-    [[0,0],[0,1],[0,2],[1,0],[1,2],[2,0],[2,1],[2,2]],
-    // 1,2	
-    [[0,1],[0,2],[1,1],[2,1],[2,2]],
-    // 2,0
-    [[1,0],[1,1],[2,1]],
-    // 2,1
-    [[1,0],[1,1],[1,2],[2,0],[2,2]],
-    // 2,2
-    [[1,1],[1,2],[2,1]]  
-  ];
-
   MSG_CREATE = "[Sandbox 3x3] Game created";
   MSG_BOOM = "[Sandbox 3x3] BOOM! – Game Over.";
   MSG_CLEAN = "[Sandbox 3x3] <NUM> bombs around your square.";
+  MSG_MARK = "[Sandbox 3x3] Square flagged as bomb.";
 
   constructor(inputMap) {
     if (inputMap==null) {
@@ -60,6 +40,11 @@ class Application {
       this.setSign(step, bombCount.toString());
       this.setMessageLine(this.MSG_CLEAN.replace("<NUM>", bombCount.toString()));
     }
+  }
+
+  markSquare(step) {
+    this.setSign(step, "*");
+    this.setMessageLine(this.MSG_MARK);
   }
 
   isBomb(step){

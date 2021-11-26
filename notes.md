@@ -2,30 +2,45 @@
 t2 
 # Note
 
-# Legend
+## Legend
     ✅ DONE (don, done, chk, check)
-	❎ X-Mark (xm, xmark)
 	⚠️ TODO (td, tod, todo)
 	🚧 IN PROGRESS (ip, ongoing)
-	🆗 OK (ok)
 	🔴 Red bullet (red, rb)
 	🟢 Green bullet (green, gb)
-	🟡 Yellow bullet (yellow, yb)
-	⭕ Circle (circ, circle)
-	❌ Cross (cros, cross)
 	⛔ Failure (fail)
-	❤ Love (lov, luv, love)
 	💬 Comment (comment, com, remark, rem)
 	🗑️ Trash (trash, bin)
 	💡 Idea (idea)
-	🕜 Time (time)
-	📌 Pin (pin)
 	🔨 Refactor (refactor, fix)
+	
+## Commits
+	* build
+	* chore
+	* ci
+	* docs
+	* feat
+	* fix
+	* init
+	* perf
+	* refactor
+	* revert
+	* style
+	* test
 
-# Pomodoro session log
+## Pomodoro session log
 1. Pomodoro session:
-	* ✅ plan first pomodoro activities
+	* ✅ pomodoro plan
 	* ✅ Create note.md and add general information 
 	* ✅ add UAT scenarios
-	* ✅ plan test cases 
-	* 🚧 add UserStroy#1 Scenatio#1 to test
+	* ✅ verify github CI workflow succeeded
+	* ✅ add SonarCloud secret key to git secret
+	* ✅ re-run sonarCloud workflows	
+	* ✅ verify github workflows are succeeded (re-run)
+	* ✅ set Quality Gate to Previous in SonarCloud
+	* ✅ create UserStory #1 and Scenario #1 
+	* ✅ complete UserStroy #1 Scenario #1 
+
+2. Pomodoro session:
+	* ⚠️ create UserStory #2 and Scenario #1 
+	* ⚠️ complete UserStroy #2 Scenario #1 

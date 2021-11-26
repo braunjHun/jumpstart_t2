@@ -99,4 +99,11 @@ describe('Mine Sweeper', () => {
       expect(application.drawBoard()).toEqual("+-+-+-+\n|2|2|1|\n+-+-+-+\n|*|*|2|\n+-+-+-+\n|3|*|2|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!");
     });
   });
+  describe('As a player I want win automatically if the massive cleaning function clear the board So that I can win the game', () => {
+    it(`GIVEN bomb on [0,2] then click on [0,0] WHEN drawing the board THEN I will see +-+-+-+\n|_|1| |\n+-+-+-+\n|_|1|1|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!`, () => {
+      const application = new Application([[" ", " ", " "], [" ", " ", "B"], [" ", " ", " "]]);
+      application.takeStep([0,0]);
+      expect(application.drawBoard()).toEqual("+-+-+-+\n|_|1| |\n+-+-+-+\n|_|1|1|\n+-+-+-+\n|_|_|_|\n+-+-+-+\n\n[Sandbox 3x3] the land is cleared! GOOD JOB!");
+    });
+  });
 });

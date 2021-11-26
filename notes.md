@@ -59,5 +59,5 @@ t2
 	* ✅ complete UserStroy #4 Scenario #3
 	* ✅ refactor test and application code	
 	* ✅ create UserStory #5 and Scenario(s)
-	* ⚠️ complete UserStroy #5 Scenario #1
+	* 🚧 complete UserStroy #5 Scenario #1
 	* ⚠️ refactor test and application code	

@@ -7,3 +7,4 @@
 
 - ❓ no definition to: if a square was marked, it is possible to unmark?
 - ❓ no definition to: if mark a non bomb square then the player lose?
+- ‼ definition is wrong in "5 – Game Victory " squares [2;0 + 2;1 + 2;2 + 1;2 + 1;2], these positions aren't the same as in example table!!

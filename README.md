@@ -192,7 +192,7 @@ So that I can think on the next cleaning step
 
 
 After I cleared the all the squares [2;0 + 2;1 + 2;2 + 1;2 + 1;2]
-  # User Story #5 ⚠️
+  # User Story #5 🚧
 As a player 
 I want to mark all the bombs expected 
 So that I can win the game

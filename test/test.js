@@ -18,5 +18,10 @@ describe('Mine Sweeper', () => {
       application.takeStep([0,2]);
       expect(application.drawBoard()).toEqual("+-+-+-+\n| | |X|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] BOOM! – Game Over.");
     });
+    it('GIVEN step to position 2;0 WHEN drawing the board THEN I will see an X in 2;0 on the board and the message BOOM! – Game Over', () => {
+      const application = new Application();
+      application.takeStep([2,0]);
+      expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|X| | |\n+-+-+-+\n\n[Sandbox 3x3] BOOM! – Game Over.");
+    });
   });
 });

@@ -126,7 +126,7 @@ I want to see the empty board
 So that I can start to play the game...
 
 
-## Scenario #1 ✅
+## Scenario #1 
   GIVEN nothing
   WHEN drawing the board
   THEN I will see the new empty board
@@ -137,17 +137,17 @@ As a player I step on a bomb
 I want to see BOOM! – Game Over
 So that I know I did a wrong movement
 
- ## Scenario #1 ✅
+ ## Scenario #1 
   GIVEN step to position 1;1
   WHEN drawing the board
   THEN I will see an X in 1;1 on the board and the message BOOM! – Game Over
 
- ## Scenario #2 ✅
+ ## Scenario #2 
   GIVEN step to position 0;2
   WHEN drawing the board
   THEN I will see an X in 0;2 on the board and the message BOOM! – Game Over
 
- ## Scenario #3 ⚠
+ ## Scenario #3 
   GIVEN step to position 2;0
   WHEN drawing the board
   THEN I will see an X in 2;0 on the board and the message BOOM! – Game Over

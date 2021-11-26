@@ -49,4 +49,4 @@ t2
 		* Scenario #3
 	* ✅ complete UserStroy #2 Scenario #1
 	* ✅ complete UserStroy #2 Scenario #2
-	* ⚠️ complete UserStroy #2 Scenario #3 
+	* 🚧 complete UserStroy #2 Scenario #3 

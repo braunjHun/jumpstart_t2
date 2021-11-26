@@ -54,5 +54,16 @@ describe('Mine Sweeper', () => {
         application.takeStep([0,2]);
         expect(application.drawBoard()).toEqual("+-+-+-+\n| | |2|\n+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n\n[Sandbox 3x3] 2 bombs around your square.");
     });
+    it(`GIVEN step to position 2;0
+    WHEN drawing the board
+    THEN I will see an 1 in 2;0 on the board and the message 1 bombs around your square. `, () => {
+      const application = new Application([
+        [" ","B"," "],
+        ["B"," ","B"],
+        [" "," "," "],
+      ]);
+        application.takeStep([2,0]);
+        expect(application.drawBoard()).toEqual("+-+-+-+\n| | | |\n+-+-+-+\n| | | |\n+-+-+-+\n|1| | |\n+-+-+-+\n\n[Sandbox 3x3] 2 bombs around your square.");
+    });
   });    
 });

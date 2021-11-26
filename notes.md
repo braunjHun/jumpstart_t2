@@ -51,5 +51,5 @@ t2
 	* ✅ refactor test and application code
 	* ✅ complete UserStroy #3 Scenario #1
 	* ✅ complete UserStroy #3 Scenario #2
-	* ⚠️ complete UserStroy #3 Scenario #3
+	* 🚧 complete UserStroy #3 Scenario #3
 	* ⚠️ refactor test and application code

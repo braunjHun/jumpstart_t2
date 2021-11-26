@@ -13,6 +13,7 @@ class Application {
   MSG_BOOM = "[Sandbox 3x3] BOOM! – Game Over.";
   MSG_CLEAN = "[Sandbox 3x3] <NUM> bombs around your square.";
   MSG_MARK = "[Sandbox 3x3] Square flagged as bomb.";
+  MSG_CLEARED = "[Sandbox 3x3] the land is cleared! GOOD JOB!";
 
   constructor(inputMap) {
     if (inputMap == null) {
@@ -31,6 +32,23 @@ class Application {
     this.BOARD_MSG_LINE = msg;
   }
 
+  getBoardMsgLine(){
+    if (this.isBoardCleared()) {
+      this.setMessageLine(this.MSG_CLEARED);
+    } 
+    return this.BOARD_NEW_LINE + this.BOARD_MSG_LINE;
+  }
+
+  isBoardCleared() {
+    for (let i = 0; i < this.BOARD_MAP.length; i++) {
+      for (let j = 0; j < this.BOARD_MAP[i].length; j++) {
+        if (this.BOARD_MAP[i][j] === this.BOARD_SPACE) {
+          return false;
+        }
+      }
+    }
+    return true;
+  }
   takeStep(step) {
     if (this.isBomb(step)) {
       this.setSign(step, this.BOARD_BOOM);
@@ -101,7 +119,7 @@ class Application {
       this.BOARD_COLUMN + this.determineSign([2, 2]) +
       this.BOARD_COLUMN + this.BOARD_NEW_LINE +
       this.BOARD_HORIZONTAL_LINE + this.BOARD_NEW_LINE +
-      this.BOARD_NEW_LINE + this.BOARD_MSG_LINE;
+      this.getBoardMsgLine();
   }
 
   setSign(step, sign) {

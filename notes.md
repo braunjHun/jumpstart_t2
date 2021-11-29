@@ -63,3 +63,4 @@ t2
 	* ✅ create UserStory #6 and Scenario(s)
 	* ✅ complete UserStroy #6 Scenario #1
 	* ✅ refactor test and application code	
+	* ✅ fix "code smell" issues reported by sonarCloud

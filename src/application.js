@@ -55,8 +55,8 @@ class Application {
 
   isBoardCleared() {
     let countSpace = 0;
-    for (let i = 0; i < this.BOARD_MAP.length; i++) {
-      countSpace += this.BOARD_MAP[i].filter((space) => space === this.BOARD_SPACE).length;
+     for (let line of this.BOARD_MAP) {
+      countSpace += line.filter((space) => space === this.BOARD_SPACE).length;
     }
     return countSpace == 0;
   }
@@ -79,23 +79,21 @@ class Application {
     this.setSign(step, this.BOARD_CLEAN);
     let collectionOfSteps = [];
     let matrix = this.BOARD_MATRIX[step[0]][step[1]];
-    for (let i = 0; i < matrix.length; i++) {
-      let x = matrix[i][0];
-      let y = matrix[i][1];
-      if (this.BOARD_MAP[x][y] === this.BOARD_SPACE) {
-        collectionOfSteps.push([x, y]);
+    for (let element of matrix) {
+      if (this.BOARD_MAP[element[0]][element[1]] === this.BOARD_SPACE) {
+        collectionOfSteps.push([element[0], element[1]]);
       }
     }
     if (collectionOfSteps.length > 0) {
-      for (var i = 0; i < collectionOfSteps.length; i++) {
-        this.takeStep(collectionOfSteps[i]);
+      for (let step of collectionOfSteps) {
+        this.takeStep(step);
       }
     }
   }
 
   markSquare(marks) {
-    for (let i = 0; i < marks.length; i++) {
-      this.setSign(marks[i], this.BOARD_MARK);
+    for (let mark of marks) {
+      this.setSign(mark, this.BOARD_MARK);
     }
     this.setMessageLine(this.MSG_MARK);
   }
@@ -108,8 +106,8 @@ class Application {
     let bombCount = 0;
 
     let matrix = this.BOARD_MATRIX[step[0]][step[1]];
-    for (let i = 0; i < matrix.length; i++) {
-      if (this.BOARD_MAP[matrix[i][0]][matrix[i][1]] === this.BOARD_BOMB) {
+    for (let element of matrix) {
+      if (this.BOARD_MAP[element[0]][element[1]] === this.BOARD_BOMB) {
         bombCount++;
       }
     }

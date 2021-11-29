@@ -64,3 +64,4 @@ t2
 	* ✅ complete UserStroy #6 Scenario #1
 	* ✅ refactor test and application code	
 	* ✅ fix "code smell" issues reported by sonarCloud
+	* ✅ fix "code smell" issues reported by sonarCloud

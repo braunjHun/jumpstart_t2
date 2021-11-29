@@ -85,8 +85,8 @@ class Application {
       }
     }
     if (collectionOfSteps.length > 0) {
-      for (let step of collectionOfSteps) {
-        this.takeStep(step);
+      for (let collectedStep of collectionOfSteps) {
+        this.takeStep(collectedStep);
       }
     }
   }
